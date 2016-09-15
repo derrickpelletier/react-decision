@@ -1,0 +1,59 @@
+{
+  "name": "react-decision",
+  "version": "0.0.1",
+  "description": "A react decorator for clickable items to confirm user intent.",
+  "keywords": [
+    "react",
+    "decision",
+    "modal",
+    "blocker",
+    "choice"
+  ],
+  "main": "lib/Decision.js",
+  "scripts": {
+    "build": "npm run build-cjs && npm run build-es6 && rimraf umd && npm run build-umd && npm run build-min",
+    "build-cjs": "rimraf lib && babel ./src -d lib",
+    "build-es6": "rimraf es6 && babel ./src -d es6 --blacklist=es6.modules",
+    "build-umd": "NODE_ENV=development webpack src/index.js umd/Decision.js",
+    "build-min": "NODE_ENV=production webpack src/index.js umd/Decision.min.js",
+    "storybook": "start-storybook -p 9001"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/derrickpelletier/react-decision.git"
+  },
+  "author": {
+    "name": "Derrick Pelletier",
+    "email": "derrick@dpelletier.com",
+    "url": "http://dpelletier.com"
+  },
+  "bugs": {
+    "url": "https://github.com/derrickpelletier/react-decision/issues"
+  },
+  "homepage": "https://github.com/derrickpelletier/react-decision#readme",
+  "devDependencies": {
+    "@kadira/storybook": "^2.6.0",
+    "babel": "^6.5.2",
+    "babel-cli": "^6.14.0",
+    "babel-core": "^6.14.0",
+    "babel-loader": "^6.2.5",
+    "babel-plugin-transform-class-properties": "^6.11.5",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-export-extensions": "^6.8.0",
+    "babel-plugin-transform-function-bind": "^6.8.0",
+    "babel-plugin-transform-object-rest-spread": "^6.8.0",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-react": "^6.11.1",
+    "babel-preset-stage-0": "^6.5.0",
+    "rimraf": "^2.5.4",
+    "webpack": "^1.13.2"
+  },
+  "peerDependencies": {
+    "react": "^0.14 || ^15.0.0-rc || ^15.0",
+    "react-dom": "^0.14 || ^15.0.0-rc || ^15.0"
+  },
+  "dependencies": {
+    "react-modal": "^1.4.0",
+    "reactcss": "^1.0.7"
+  }
+}
