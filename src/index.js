@@ -5,19 +5,18 @@
  * that let's you ascertain user intentions before your action!
 
  */
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Modal from 'react-modal';
-import reactCSS from 'reactcss';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import Modal from 'react-modal'
+import reactCSS from 'reactcss'
 
-//
-const baseStyles =  {
+const baseStyles = {
   default: {
     overlay: {
       backgroundColor: 'rgba(0, 0, 0, .85)',
       zIndex: 1000
     },
-    //overrider
+    // overrider
     content: {
       background: 'none',
       border: 'none',
@@ -25,8 +24,8 @@ const baseStyles =  {
       alignItems: 'center',
       justifyContent: 'center'
     }
-  },
-};
+  }
+}
 
 const classSets = {
   semantic: {
@@ -51,14 +50,14 @@ const Reposition = React.createClass({
   getInitialState: function () {
     return {
       correction: -60
-    };
+    }
   },
 
   componentDidMount: function () {
-    const correction = ReactDOM.findDOMNode(this.wrapperNode).offsetHeight / -2;
+    const correction = ReactDOM.findDOMNode(this.wrapperNode).offsetHeight / -2
     this.setState({
       correction
-    });
+    })
   },
 
   render: function () {
@@ -74,9 +73,9 @@ const Reposition = React.createClass({
       <div
         className={this.props.className}
         style={styleBlock}
-        ref={(node) => this.wrapperNode = node}
+        ref={(node) => (this.wrapperNode = node)}
         >{this.props.children}</div>
-    );
+    )
   }
 })
 
@@ -95,7 +94,7 @@ const Decision = React.createClass({
   getInitialState: function () {
     return {
       isOpen: false
-    };
+    }
   },
 
   getDefaultProps: function () {
@@ -112,56 +111,53 @@ const Decision = React.createClass({
   block: function () {
     this.setState({
       isOpen: true
-    });
+    })
   },
 
   closeModal: function () {
     this.setState({
       isOpen: false
-    });
+    })
   },
 
   positiveClick: function () {
     this.setState({
       isOpen: false
-    });
-    this.continue && this.continue();
+    })
+    this.continue && this.continue()
   },
 
   render: function () {
-
     const {
       classSet,
       onClick
-    } = this.props;
+    } = this.props
 
-    let chosenClasses = {};
-    if(typeof classSet === 'object') {
-      chosenClasses = classSet;
-    } else if(classSets[classSet]) {
-      chosenClasses = classSets[classSet];
+    let chosenClasses = {}
+    if (typeof classSet === 'object') {
+      chosenClasses = classSet
+    } else if (classSets[classSet]) {
+      chosenClasses = classSets[classSet]
     }
 
     const headerNode = this.props.header ? (
       <div className={chosenClasses.header}>{this.props.header}</div>
-    ) : null;
+    ) : null
 
-    const verticalCorrect = headerNode ? -93 : -60;
-
-    const children = React.Children.toArray(this.props.children);
-    if(!children.length) return null;
+    const children = React.Children.toArray(this.props.children)
+    if (!children.length) return null
 
     let targetChild = children[0]
 
-    if(typeof targetChild === 'string') {
+    if (typeof targetChild === 'string') {
       targetChild = <button className={this.props.className}>{targetChild}</button>
     }
 
     // steal the action for this wrapper.
-    this.continue = onClick || targetChild.props.onClick;
+    this.continue = onClick || targetChild.props.onClick
 
     // Append the modal into the childs children
-    let grandChildren = React.Children.toArray(targetChild.props.children);
+    let grandChildren = React.Children.toArray(targetChild.props.children)
     grandChildren.push(
       <Modal
         isOpen={this.state.isOpen}
@@ -180,24 +176,24 @@ const Decision = React.createClass({
               className={chosenClasses.negativeButton || ''}
               onClick={this.closeModal}
               >
-                {this.props.negativeLabel}
+              {this.props.negativeLabel}
             </a>
             <a
               className={chosenClasses.positiveButton || ''}
               onClick={this.positiveClick}
               >
-                {this.props.positiveLabel}
+              {this.props.positiveLabel}
             </a>
           </div>
         </Reposition>
       </Modal>
-    );
+    )
 
     return React.cloneElement(targetChild, {
       onClick: this.block,
       children: grandChildren
-    });
+    })
   }
-});
+})
 
-export default Decision;
+export default Decision

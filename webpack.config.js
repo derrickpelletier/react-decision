@@ -1,11 +1,8 @@
-var webpack = require('webpack');
-var path = require('path');
-
 var config = {
   entry: './src/index.js',
   output: {
     library: 'Decision',
-    libraryTarget:'umd'
+    libraryTarget: 'umd'
   },
   externals: {
     'react': {
@@ -16,14 +13,14 @@ var config = {
     },
     'react-dom': 'ReactDOM'
   },
-  module : {
+  module: {
     loaders: [
       {
         test: /\.js$/,
         loader: 'babel'
-      },
-    ],
+      }
+    ]
   }
-};
+}
 
-module.exports = config;
+module.exports = config

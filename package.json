@@ -16,7 +16,9 @@
     "build-es6": "rimraf es6 && babel ./src -d es6 --blacklist=es6.modules",
     "build-umd": "NODE_ENV=development webpack src/index.js umd/Decision.js",
     "build-min": "NODE_ENV=production webpack src/index.js umd/Decision.min.js",
-    "storybook": "start-storybook -p 9001"
+    "storybook": "start-storybook -p 9001",
+    "lint": "standard",
+    "lint-fix": "standard --fix"
   },
   "repository": {
     "type": "git",
@@ -46,6 +48,7 @@
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-0": "^6.5.0",
     "rimraf": "^2.5.4",
+    "standard": "^8.4.0",
     "webpack": "^1.13.2"
   },
   "peerDependencies": {
