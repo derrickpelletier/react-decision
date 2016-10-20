@@ -18,15 +18,11 @@ const baseStyles =  {
     },
     //overrider
     content: {
-      position: 'relative',
-      top: 'inherit',
-      left: 'inherit',
-      right: 'inherit',
-      bottom: 'inherit',
-      padding: 0,
       background: 'none',
-      width: '100%',
-      height: '100%',
+      border: 'none',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center'
     }
   },
 };
@@ -65,12 +61,18 @@ const Reposition = React.createClass({
   },
 
   render: function () {
+    let styleBlock = {}
+    if (!this.props.useFlex) {
+      styleBlock = {
+        top: '50%',
+        position: 'absolute',
+        marginTop: this.state.correction
+      }
+    }
     return (
       <div
         className={this.props.className}
-        style={{
-          marginTop: this.state.correction
-        }}
+        style={styleBlock}
         ref={(node) => this.wrapperNode = node}
         >{this.props.children}</div>
     );
@@ -85,7 +87,8 @@ const Decision = React.createClass({
     message: React.PropTypes.node,
     positiveLabel: React.PropTypes.string,
     negativeLabel: React.PropTypes.string,
-    classSet: React.PropTypes.string
+    classSet: React.PropTypes.string,
+    useFlex: React.PropTypes.bool
   },
 
   getInitialState: function () {
@@ -101,6 +104,7 @@ const Decision = React.createClass({
       positiveLabel: 'Confirm',
       negativeLabel: 'Abort',
       classSet: 'semantic',
+      useFlex: true
     }
   },
 

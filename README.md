@@ -34,3 +34,4 @@ All props are optional. This example shows all available props.
 + **message**: `String`, message text in modal
 + **positiveLabel**: `String`, label for the positive/continue button.
 + **negativeLabel**: `String`, label for the negative/cancel/abort button.
++ **useFlex**: `Boolean`, defaults to true, uses flexbox to centre the modal. Otherwise repositions vertically based on dynamic height.
