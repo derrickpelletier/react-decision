@@ -9,6 +9,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 import reactCSS from 'reactcss';
+
 //
 const baseStyles =  {
   default: {
