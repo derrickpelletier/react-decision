@@ -131,7 +131,8 @@ const Decision = React.createClass({
   render: function () {
 
     const {
-      classSet
+      classSet,
+      onClick
     } = this.props;
 
     let chosenClasses = {};
@@ -147,16 +148,20 @@ const Decision = React.createClass({
 
     const verticalCorrect = headerNode ? -93 : -60;
 
-
-
     const children = React.Children.toArray(this.props.children);
     if(!children.length) return null;
 
+    let targetChild = children[0]
+
+    if(typeof targetChild === 'string') {
+      targetChild = <button>{targetChild}</button>
+    }
+
     // steal the action for this wrapper.
-    this.continue = children[0].props.onClick;
+    this.continue = onClick || targetChild.props.onClick;
 
     // Append the modal into the childs children
-    let grandChildren = React.Children.toArray(children[0].props.children);
+    let grandChildren = React.Children.toArray(targetChild.props.children);
     grandChildren.push(
       <Modal
         isOpen={this.state.isOpen}
@@ -188,7 +193,7 @@ const Decision = React.createClass({
       </Modal>
     );
 
-    return React.cloneElement(children[0], {
+    return React.cloneElement(targetChild, {
       onClick: this.block,
       children: grandChildren
     });
