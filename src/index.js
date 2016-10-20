@@ -154,7 +154,7 @@ const Decision = React.createClass({
     let targetChild = children[0]
 
     if(typeof targetChild === 'string') {
-      targetChild = <button>{targetChild}</button>
+      targetChild = <button className={this.props.className}>{targetChild}</button>
     }
 
     // steal the action for this wrapper.
