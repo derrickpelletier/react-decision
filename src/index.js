@@ -39,6 +39,14 @@ const classSets = {
     actions: 'actions',
     negativeButton: 'ui red basic cancel inverted button',
     positiveButton: 'ui green ok inverted button'
+  },
+  tachyons: {
+    modal: 'mw6 white-90 pa3',
+    header: 'f4 mb2 lh-title',
+    content: 'f5 lh-copy',
+    actions: 'bt btw1 b--white-10 pt3 mt3',
+    negativeButton: 'f6 link dim br2 ba mr2 bw1 ph3 pv2 dib white-80 pointer',
+    positiveButton: 'f6 link dim br2 ba bw1 ph3 pv2 dib b green pointer'
   }
 }
 
@@ -150,24 +158,26 @@ const Decision = React.createClass({
         onRequestClose={this.closeModal}
         style={reactCSS(baseStyles)}
         >
-        <Reposition className={chosenClasses.modal || ''}>
+        <Reposition
+          useFlex={this.props.useFlex}
+          className={chosenClasses.modal || ''}>
           {headerNode}
           <div className={chosenClasses.content || ''}>
             {this.props.message}
           </div>
           <div className={chosenClasses.actions || ''}>
-            <button
+            <a
               className={chosenClasses.negativeButton || ''}
               onClick={this.closeModal}
               >
                 {this.props.negativeLabel}
-            </button>
-            <button
+            </a>
+            <a
               className={chosenClasses.positiveButton || ''}
               onClick={this.positiveClick}
               >
                 {this.props.positiveLabel}
-            </button>
+            </a>
           </div>
         </Reposition>
       </Modal>
