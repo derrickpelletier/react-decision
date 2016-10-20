@@ -11,11 +11,11 @@ storiesOf('Decision', module)
       >Foobar
     </Decision>
   ))
-    .add('default', () => (
-      <Decision>
-        <button onClick={action('Delete action continues.')}>Delete</button>
-      </Decision>
-    ))
+  .add('default', () => (
+    <Decision>
+      <button onClick={action('Delete action continues.')}>Delete</button>
+    </Decision>
+  ))
   .add('custom text', () => (
     <Decision
       message="Deleting this stuff is probably a bad idea..."
