@@ -104,7 +104,7 @@ const Decision = React.createClass({
       message: 'Are you sure?',
       positiveLabel: 'Confirm',
       negativeLabel: 'Abort',
-      classSet: 'semantic',
+      classSet: 'tachyons',
       useFlex: true
     }
   },
