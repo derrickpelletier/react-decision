@@ -1,6 +1,6 @@
 {
   "name": "react-decision",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "A react decorator for clickable items to confirm user intent.",
   "keywords": [
     "react",
