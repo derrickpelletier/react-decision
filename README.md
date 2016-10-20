@@ -1,5 +1,7 @@
 # Decision
 
+[![npm version](https://badge.fury.io/js/react-decision.svg)](https://badge.fury.io/js/react-decision)
+
 A react decorator for clickable items to confirm user intent.
 
 ------
@@ -17,6 +19,7 @@ Use `<Decision>` to wrap an item that has an `onClick` prop. When clicked, the u
 Can either be used standalone (uses `<button>`), or wrap a component that has an `onClick` property.
 
 **Standalone example**
+
 
 ```javascript
 <Decision onClick={deleteImportantStuff}>delete?!</Decision>
